@@ -28,12 +28,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-screen flex flex-col antialiased" style={{ background: "#FDFCF8", color: "#18160F" }}>
         <header style={{ background: "#0F2244", color: "#fff" }}>
           <nav className="max-w-5xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
-            <a href="/" className="flex items-center gap-2">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/logo-icon.png" alt="Expat Checkbook" style={{ height: 36, width: 36, objectFit: "contain", borderRadius: 6 }} />
-              <span className="font-bold text-lg" style={{ fontFamily: "var(--font-playfair)", color: "#fff", letterSpacing: "-0.01em" }}>
-                Expat<span style={{ color: "#34D399" }}>Checkbook</span>
-              </span>
+            <a href="/" className="font-bold text-lg" style={{ fontFamily: "var(--font-playfair)", color: "#fff", letterSpacing: "-0.01em" }}>
+              Expat<span style={{ color: "#34D399" }}>Checkbook</span>
             </a>
             <div className="hidden md:flex items-center gap-6">
               {navLinks.map(({ label, href }) => (
