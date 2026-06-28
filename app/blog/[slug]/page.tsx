@@ -78,7 +78,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         <div className="w-full overflow-hidden" style={{ maxHeight: 420 }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src={`https://picsum.photos/seed/${post.slug}/1200/420`}
+            src={post.heroImage?.src ?? `https://picsum.photos/seed/${post.slug}/1200/420`}
             alt={post.title}
             className="w-full object-cover"
             style={{ maxHeight: 420 }}
@@ -129,8 +129,8 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
                   <div className="my-5 rounded-xl overflow-hidden" style={{ border: "1px solid #E5E7EB" }}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src={`https://picsum.photos/seed/${post.slug}-${i}/900/380`}
-                      alt={section.h2}
+                      src={section.image?.src ?? `https://picsum.photos/seed/${post.slug}-${i}/900/380`}
+                      alt={section.image?.alt ?? section.h2}
                       className="w-full object-cover"
                       style={{ maxHeight: 380 }}
                     />
