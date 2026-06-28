@@ -14,7 +14,7 @@ export default function TermsPage() {
         { h: "5. Disclaimer of Warranties", body: "Site provided 'as is'. We disclaim all warranties to the fullest extent permitted by law." },
         { h: "6. Limitation of Liability", body: "We shall not be liable for any damages arising from use of this site." },
         { h: "7. Changes", body: "We may modify Terms at any time. Continued use constitutes acceptance." },
-        { h: "8. Contact", body: "Email guifrhi.khalid@gmail.com" },
+        { h: "8. Contact", body: "Email hello@expatcheckbook.info" },
       ].map(({ h, body }) => (
         <div key={h} className="mb-8">
           <h2 className="text-base font-bold mb-2" style={{ color: "#0F2244" }}>{h}</h2>

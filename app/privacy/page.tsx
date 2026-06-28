@@ -9,7 +9,7 @@ const sections = [
   { h: "6. Financial Information Disclaimer", body: "This site discusses financial products and services. We do not collect or store any financial account information. Any data entered into third-party financial tools is governed by those companies' own privacy policies." },
   { h: "7. Your Rights", body: "EU/UK residents: GDPR rights apply. California residents: CCPA rights apply. Contact us to access, correct, or delete your data." },
   { h: "8. Changes", body: "We may update this policy. Changes posted here with a revised date." },
-  { h: "9. Contact", body: "Questions? Email: guifrhi.khalid@gmail.com" },
+  { h: "9. Contact", body: "Questions? Email: hello@expatcheckbook.info" },
 ];
 export default function PrivacyPage() {
   return (

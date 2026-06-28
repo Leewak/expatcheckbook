@@ -11,7 +11,7 @@ export default function AffiliatePage() {
         { h: "Same Price for You", body: "Affiliate commissions come from the company's marketing budget, not from you. You pay exactly the same price through our link as directly." },
         { h: "Our Standards", body: "We only recommend financial products and services we believe are genuinely useful for expats. Affiliate relationships do not affect our editorial opinions, ratings, or rankings. Financial products are evaluated on fees, availability, exchange rates, and customer service — not commission size." },
         { h: "Financial Product Note", body: "Expat Checkbook is not a licensed financial advisor. Affiliate links to banking, insurance, and money transfer services are editorial recommendations, not financial advice. Always compare options and read terms before choosing a financial product." },
-        { h: "Contact", body: "Questions? Email guifrhi.khalid@gmail.com" },
+        { h: "Contact", body: "Questions? Email hello@expatcheckbook.info" },
       ].map(({ h, body }) => (
         <div key={h} className="mb-8">
           <h2 className="text-base font-bold mb-2" style={{ color: "#0F2244" }}>{h}</h2>
