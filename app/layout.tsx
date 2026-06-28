@@ -8,7 +8,7 @@ const playfair = Playfair_Display({ variable: "--font-playfair", subsets: ["lati
 
 export const metadata: Metadata = {
   title: { default: "Expat Checkbook — Smart Money Moves for Life Abroad", template: "%s | Expat Checkbook" },
-  description: "Banking, taxes, and money guides for expats and digital nomads. Unbiased, practical, and updated regularly.",
+  description: "Smart money moves for life abroad",
   metadataBase: new URL("https://expatcheckbook.info"),
 };
 
