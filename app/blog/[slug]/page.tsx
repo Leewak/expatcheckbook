@@ -74,6 +74,17 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           </div>
         </div>
 
+        {/* Hero image */}
+        <div className="w-full overflow-hidden" style={{ maxHeight: 420 }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={`https://picsum.photos/seed/${post.slug}/1200/420`}
+            alt={post.title}
+            className="w-full object-cover"
+            style={{ maxHeight: 420 }}
+          />
+        </div>
+
         <div className="max-w-3xl mx-auto px-5 sm:px-8 py-10">
           {/* Quick Answer AEO */}
           {post.quickAnswer && (
@@ -85,25 +96,87 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           <div className="mb-6 p-3 rounded-lg text-xs" style={{ background: "#F8F7F4", border: "1px solid #EAE8E1", color: "#9CA3AF" }}>
             <strong style={{ color: "#706D62" }}>Affiliate disclosure:</strong> Some links earn us a commission at no cost to you. We&apos;ve used every service we recommend. No sponsored content.
           </div>
+
+          {/* Top affiliate with company logo */}
           {post.affiliates && post.affiliates[0] && (
             <div className="mb-8 p-5 rounded-xl" style={{ background: "#F0FDF4", border: "1px solid #BBF7D0" }}>
-              <p className="text-xs font-bold mb-1" style={{ color: "#0D7C4A" }}>{post.affiliates[0].badge ?? "Our Recommendation"}</p>
-              <p className="font-bold text-xl mb-3" style={{ fontFamily: "var(--font-playfair)", color: "#18160F" }}>{post.affiliates[0].name}</p>
+              <div className="flex items-center gap-4 mb-3">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={`https://logo.clearbit.com/${new URL(post.affiliates[0].url).hostname}`}
+                  alt={post.affiliates[0].name}
+                  className="rounded-lg object-contain bg-white"
+                  style={{ width: 48, height: 48, border: "1px solid #E5E7EB" }}
+                  onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
+                />
+                <div>
+                  <p className="text-xs font-bold" style={{ color: "#0D7C4A" }}>{post.affiliates[0].badge ?? "Our Recommendation"}</p>
+                  <p className="font-bold text-xl" style={{ fontFamily: "var(--font-playfair)", color: "#18160F" }}>{post.affiliates[0].name}</p>
+                </div>
+              </div>
               <a href={post.affiliates[0].url} target="_blank" rel="noopener sponsored" className="inline-block text-sm font-semibold px-5 py-2.5 rounded-lg hover:opacity-90 transition-opacity" style={{ background: "#0D7C4A", color: "#fff" }}>{post.affiliates[0].cta}</a>
             </div>
           )}
+
+          {/* Article body — sections */}
           <div style={{ color: "#374151", lineHeight: "1.8" }}>
             <p className="text-lg mb-8" style={{ color: "#706D62" }}>{post.excerpt}</p>
-            <h2 className="text-2xl font-bold mt-8 mb-4" style={{ fontFamily: "var(--font-playfair)", color: "#18160F" }}>No Sponsored Content — Here&apos;s Our Policy</h2>
-            <p>Every financial service in this guide was tested with real money across multiple countries. We don&apos;t accept payment for placement, and we disclose all affiliate relationships. Our revenue comes from commissions when you use our links — this keeps the content free and honest.</p>
+            {post.sections?.map((section, i) => (
+              <div key={i} className="mb-10">
+                <h2 className="text-2xl font-bold mt-8 mb-4" style={{ fontFamily: "var(--font-playfair)", color: "#18160F" }}>{section.h2}</h2>
+                {/* Section image every other section */}
+                {i % 2 === 0 && (
+                  <div className="my-5 rounded-xl overflow-hidden" style={{ border: "1px solid #E5E7EB" }}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={`https://picsum.photos/seed/${post.slug}-${i}/900/380`}
+                      alt={section.h2}
+                      className="w-full object-cover"
+                      style={{ maxHeight: 380 }}
+                    />
+                  </div>
+                )}
+                {section.paras.map((para, j) => (
+                  <p key={j} className="mb-4 leading-relaxed" style={{ color: "#374151" }}>{para}</p>
+                ))}
+                {section.list && (
+                  <ul className="my-4 space-y-2 pl-4">
+                    {section.list.map((item, k) => (
+                      <li key={k} className="text-sm flex items-start gap-2" style={{ color: "#374151" }}>
+                        <span className="mt-1 shrink-0" style={{ color: "#0D7C4A" }}>✓</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ))}
+            {!post.sections && (
+              <p>Every financial service in this guide was tested with real money across multiple countries. We don&apos;t accept payment for placement, and we disclose all affiliate relationships.</p>
+            )}
           </div>
+
+          {/* Second affiliate with company logo */}
           {post.affiliates && post.affiliates.length > 1 && (
             <div className="my-10 p-5 rounded-xl" style={{ background: "#EFF6FF", border: "1px solid #BFDBFE" }}>
-              <p className="text-xs font-bold mb-1" style={{ color: "#1D4ED8" }}>{post.affiliates[1].badge ?? "Also Recommended"}</p>
-              <p className="font-bold text-xl mb-3" style={{ fontFamily: "var(--font-playfair)", color: "#18160F" }}>{post.affiliates[1].name}</p>
+              <div className="flex items-center gap-4 mb-3">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={`https://logo.clearbit.com/${new URL(post.affiliates[1].url).hostname}`}
+                  alt={post.affiliates[1].name}
+                  className="rounded-lg object-contain bg-white"
+                  style={{ width: 48, height: 48, border: "1px solid #E5E7EB" }}
+                  onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
+                />
+                <div>
+                  <p className="text-xs font-bold" style={{ color: "#1D4ED8" }}>{post.affiliates[1].badge ?? "Also Recommended"}</p>
+                  <p className="font-bold text-xl" style={{ fontFamily: "var(--font-playfair)", color: "#18160F" }}>{post.affiliates[1].name}</p>
+                </div>
+              </div>
               <a href={post.affiliates[1].url} target="_blank" rel="noopener sponsored" className="inline-block text-sm font-semibold px-4 py-2 rounded-lg hover:opacity-90 transition-opacity" style={{ background: "#2563EB", color: "#fff" }}>{post.affiliates[1].cta}</a>
             </div>
           )}
+
           {post.faq && post.faq.length > 0 && (
             <div className="mt-12">
               <h2 className="text-2xl font-bold mb-6" style={{ fontFamily: "var(--font-playfair)", color: "#18160F" }}>Your Questions Answered</h2>
@@ -117,15 +190,27 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
               </div>
             </div>
           )}
+
+          {/* All services with logos */}
           {post.affiliates && post.affiliates.length > 0 && (
             <div className="mt-12 pt-8" style={{ borderTop: "1px solid #EAE8E1" }}>
               <h3 className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "#B8B5AD" }}>Services We Use &amp; Recommend</h3>
               <div className="space-y-3">
                 {post.affiliates.map((aff, i) => (
                   <a key={i} href={aff.url} target="_blank" rel="noopener sponsored" className="flex items-center justify-between p-4 rounded-xl group hover:shadow-sm transition-all" style={{ background: "#fff", border: "1px solid #EAE8E1" }}>
-                    <div>
-                      {aff.badge && <span className="text-xs mb-0.5 block" style={{ color: "#0D7C4A" }}>{aff.badge}</span>}
-                      <span className="font-semibold text-sm" style={{ color: "#18160F" }}>{aff.name}</span>
+                    <div className="flex items-center gap-3">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={`https://logo.clearbit.com/${new URL(aff.url).hostname}`}
+                        alt={aff.name}
+                        className="rounded object-contain bg-white shrink-0"
+                        style={{ width: 36, height: 36, border: "1px solid #E5E7EB" }}
+                        onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
+                      />
+                      <div>
+                        {aff.badge && <span className="text-xs mb-0.5 block" style={{ color: "#0D7C4A" }}>{aff.badge}</span>}
+                        <span className="font-semibold text-sm" style={{ color: "#18160F" }}>{aff.name}</span>
+                      </div>
                     </div>
                     <span className="text-xs px-3 py-1.5 rounded-lg font-medium shrink-0 ml-4" style={{ background: "#0D7C4A", color: "#fff" }}>{aff.cta.replace(" →", "")}</span>
                   </a>
@@ -133,6 +218,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
               </div>
             </div>
           )}
+
           <div className="flex flex-wrap gap-2 mt-10 pt-8" style={{ borderTop: "1px solid #EAE8E1" }}>
             {post.tags.map((tag) => <span key={tag} className="text-xs px-2.5 py-1 rounded" style={{ background: "#F8F7F4", color: "#706D62" }}>{tag}</span>)}
           </div>
