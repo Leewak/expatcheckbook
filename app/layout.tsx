@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Source_Sans_3, Playfair_Display } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 
 const sourceSans = Source_Sans_3({ variable: "--font-source-sans", subsets: ["latin"] });
@@ -23,7 +22,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${sourceSans.variable} ${playfair.variable}`}>
       <head>
-        <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9394532963824272" crossOrigin="anonymous" strategy="beforeInteractive" />
+        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9394532963824272" crossOrigin="anonymous"></script>
       </head>
       <body className="min-h-screen flex flex-col antialiased" style={{ background: "#FDFCF8", color: "#18160F" }}>
         <header style={{ background: "#0F2244", color: "#fff" }}>
