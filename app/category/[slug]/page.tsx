@@ -18,23 +18,27 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
   const catPosts = getPostsByCategory(slug);
 
   return (
-    <div className="py-14" style={{ background: "#FDFCF8" }}>
-      <div className="max-w-5xl mx-auto px-5 sm:px-8">
-        <Link href="/blog" className="text-xs mb-6 block" style={{ color: "#706D62" }}>← All Guides</Link>
-        <div className="tag-pill mb-3 inline-flex">{cat.label}</div>
-        <h1 className="text-3xl font-bold mb-1" style={{ fontFamily: "var(--font-playfair)", color: "#18160F" }}>{cat.label}</h1>
-        <p className="text-sm mb-10" style={{ color: "#B8B5AD" }}>{catPosts.length} guides</p>
-        <div className="divide-y" style={{ borderColor: "#EAE8E1" }}>
-          {catPosts.map((post) => (
-            <Link key={post.slug} href={`/blog/${post.slug}`} className="py-5 flex items-start gap-4 group block">
-              <div className="flex-1">
-                <h3 className="font-semibold leading-snug group-hover:text-green-700 transition-colors" style={{ color: "#18160F" }}>{post.title}</h3>
-                <p className="text-sm mt-1 line-clamp-2" style={{ color: "#706D62" }}>{post.excerpt}</p>
-              </div>
-              <span className="text-xs shrink-0 mt-1" style={{ color: "#B8B5AD" }}>{formatDate(post.date)}</span>
-            </Link>
-          ))}
-        </div>
+    <div className="bg-ink px-[5%] py-14 md:py-18 flex flex-col gap-3">
+      <div className="flex gap-2 items-center font-mono text-[11px] tracking-[0.08em] uppercase text-on-ink-meta">
+        <Link href="/blog" className="text-on-ink-meta hover:text-brass-light">Topics</Link>
+        <span>/</span>
+        <span className="text-brass-light">{cat.label}</span>
+      </div>
+      <h1 className="m-0 font-serif font-semibold text-[clamp(34px,5vw,52px)] leading-[1.05] tracking-[-0.025em] text-white">{cat.label}</h1>
+      <p className="m-0 text-[clamp(16px,1.5vw,19px)] leading-[1.62] text-on-ink-body max-w-[62ch]">{cat.description}</p>
+      <span className="font-mono text-[11px] tracking-[0.1em] uppercase text-brass-light mt-1">{catPosts.length} guide{catPosts.length === 1 ? "" : "s"}</span>
+
+      <div className="bg-paper -mx-[5%] px-[5%] pt-10 mt-8 flex flex-col">
+        {catPosts.map((post) => (
+          <Link key={post.slug} href={`/blog/${post.slug}`} className="py-5 flex items-start gap-5 border-b border-rule hover:bg-white flex-wrap">
+            <span className="font-mono text-[11px] text-muted whitespace-nowrap pt-1 min-w-[76px] uppercase">{formatDate(post.date)}</span>
+            <div className="flex-1 min-w-[240px]">
+              <h3 className="m-0 font-serif text-lg font-semibold leading-snug text-ink">{post.title}</h3>
+              <p className="mt-1.5 mb-0 text-sm leading-[1.55] text-muted line-clamp-2">{post.excerpt}</p>
+            </div>
+          </Link>
+        ))}
+        {catPosts.length === 0 && <p className="text-sm text-muted pb-10">No guides in this topic yet.</p>}
       </div>
     </div>
   );

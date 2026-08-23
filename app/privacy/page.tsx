@@ -13,14 +13,14 @@ const sections = [
 ];
 export default function PrivacyPage() {
   return (
-    <div className="max-w-3xl mx-auto px-5 sm:px-8 py-20" style={{ background: "#FDFCF8" }}>
-      <p className="text-xs mb-4" style={{ color: "#8A8272" }}>Last updated: June 2026</p>
-      <h1 className="text-3xl font-bold mb-4" style={{ fontFamily: "var(--font-playfair)", color: "#0F2244" }}>Privacy Policy</h1>
-      <p className="mb-10 text-sm" style={{ color: "#6B7360" }}>This Privacy Policy explains how Expat Checkbook collects, uses, and shares information when you visit expatcheckbook.info.</p>
+    <div className="max-w-3xl mx-auto px-5 sm:px-8 py-20 bg-paper">
+      <p className="text-xs mb-4 text-muted font-mono uppercase tracking-[0.06em]">Last updated: June 2026</p>
+      <h1 className="text-3xl font-bold mb-4 font-serif">Privacy Policy</h1>
+      <p className="mb-10 text-sm text-muted">This Privacy Policy explains how Expat Checkbook collects, uses, and shares information when you visit expatcheckbook.info.</p>
       {sections.map(({ h, body }) => (
         <div key={h} className="mb-8">
-          <h2 className="text-base font-bold mb-2" style={{ color: "#0F2244" }}>{h}</h2>
-          <p className="text-sm leading-relaxed" style={{ color: "#6B7360" }}>{body}</p>
+          <h2 className="text-base font-bold mb-2 text-ink">{h}</h2>
+          <p className="text-sm leading-relaxed text-muted">{body}</p>
         </div>
       ))}
     </div>

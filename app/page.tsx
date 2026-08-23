@@ -1,6 +1,11 @@
 import Link from "next/link";
-import { posts, getFeaturedPosts, categories, formatDate, getCategoryLabel } from "@/lib/posts";
 import type { Metadata } from "next";
+import { posts, categories, getPostsByCategory, getCategoryLabel, formatDate, getPost } from "@/lib/posts";
+import { VerifiedStamp } from "@/components/VerifiedStamp";
+import { ComparisonTable } from "@/components/ComparisonTable";
+import { NewsletterForm } from "@/components/NewsletterForm";
+import { AdSlot } from "@/components/AdSlot";
+import { AD_SLOTS } from "@/lib/adSlots";
 
 export const metadata: Metadata = {
   title: "Expat Checkbook — Smart Money Moves for Life Abroad",
@@ -8,105 +13,154 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
+const CheckIcon = ({ size = 12 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 64 64" fill="none">
+    <path d="M8 33.5l14 14L58 8" stroke="#B0803A" strokeWidth="10" strokeLinecap="square" />
+  </svg>
+);
+
 export default function HomePage() {
-  const featured = getFeaturedPosts();
-  const latest = posts.filter((p) => !p.featured).slice(0, 4);
+  const recent = [...posts].sort((a, b) => (a.date < b.date ? 1 : -1)).slice(0, 4);
+  const totalGuides = posts.length;
+  // Homepage's "most-read comparison" only renders once a real post has
+  // comparisonTable data attached — see components/ComparisonTable and the
+  // Post.comparisonTable field. None of the seed posts have it populated yet.
+  const featuredComparisonPost = getPost("wise-vs-revolut-expats-2026");
+  const comparison = featuredComparisonPost?.comparisonTable;
 
   return (
     <>
       {/* Hero */}
-      <section className="py-16 md:py-24" style={{ background: "#0F2244", color: "#fff" }}>
-        <div className="max-w-5xl mx-auto px-5 sm:px-8">
-          <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 mb-6 px-3 py-1.5 rounded text-xs font-mono" style={{ border: "1px solid rgba(52,211,153,0.3)", background: "rgba(52,211,153,0.1)", color: "#34D399" }}>
-              Updated for 2026 — 200K+ expats read this
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold leading-[1.1] mb-5" style={{ fontFamily: "var(--font-playfair)", color: "#fff", letterSpacing: "-0.02em" }}>
-              Smart money moves for life abroad.
-            </h1>
-            <p className="text-lg mb-8" style={{ color: "rgba(255,255,255,0.65)" }}>
-              Practical guides on banking, taxes, insurance, and transfers for expats and digital nomads. No fluff, just what works.
-            </p>
-            <div className="flex gap-3 flex-wrap">
-              <Link href="/blog" className="px-5 py-2.5 rounded-lg text-sm font-semibold" style={{ background: "#0D7C4A", color: "#fff" }}>All Guides</Link>
-              <Link href="/category/banking" className="px-5 py-2.5 rounded-lg text-sm font-semibold" style={{ border: "1px solid rgba(255,255,255,0.2)", color: "#fff" }}>Expat Banking</Link>
-            </div>
+      <section className="flex gap-8 md:gap-16 flex-wrap items-start px-[5%] pt-12 md:pt-24 pb-14 md:pb-26 bg-ink">
+        <div className="flex-1 basis-[480px] flex flex-col gap-[22px]">
+          <span className="font-mono text-xs tracking-[0.14em] uppercase text-brass-light">
+            Updated for 2026 — {totalGuides} guides, checked and dated
+          </span>
+          <h1 className="m-0 font-serif font-semibold text-[clamp(38px,5vw,68px)] leading-[1.04] tracking-[-0.025em] text-white text-balance">
+            Every figure on this site carries the date we checked it.
+          </h1>
+          <p className="m-0 text-[clamp(16px,1.5vw,20px)] leading-[1.62] text-on-ink-body max-w-[56ch]">
+            Practical guides on banking, taxes, insurance, and transfers for expats and digital nomads. Fees, thresholds and visa rules move
+            constantly, so every regulatory claim here shows when it was last verified and against which source. No fluff, just what works.
+          </p>
+          <div className="flex gap-3 flex-wrap mt-1.5">
+            <Link href="/blog" className="text-[15px] font-semibold text-ink bg-brass-light px-[26px] py-3.5 hover:bg-white">
+              All Guides
+            </Link>
+            <Link href="/category/banking" className="text-[15px] font-semibold text-white border border-slate px-[25px] py-[13px] hover:border-brass-light hover:text-brass-light">
+              Expat Banking
+            </Link>
           </div>
         </div>
-      </section>
-
-      {/* Trust bar */}
-      <section style={{ background: "#F5F4F0", borderBottom: "1px solid #EAE8E1" }}>
-        <div className="max-w-5xl mx-auto px-5 sm:px-8 py-4">
-          <div className="flex flex-wrap gap-6 items-center">
-            {[["No sponsored content", ""], ["Updated monthly", ""], ["Written by actual expats", ""]].map(([label]) => (
-              <div key={label} className="flex items-center gap-2 text-sm" style={{ color: "#706D62" }}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0D7C4A" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                {label}
+        <div className="flex-0 basis-[340px] min-w-[280px] bg-ink-raised border border-slate p-6">
+          <div className="font-mono text-[11px] tracking-[0.12em] uppercase text-on-ink-meta pb-4 border-b border-slate">How we verify</div>
+          <div className="flex flex-col">
+            {[
+              ["01", "Every rate, fee and threshold is traced to a primary source — the bank, the tax authority, the consulate."],
+              ["02", "The check date and source count sit at the top of the page, not buried in a footer."],
+              ["03", "Anything past 120 days without a re-check is flagged as stale until we redo it."],
+            ].map(([n, text], i, arr) => (
+              <div key={n} className={`flex gap-3.5 py-4 ${i < arr.length - 1 ? "border-b border-slate" : "pb-1"}`}>
+                <span className="font-mono text-xs text-brass-light pt-0.5">{n}</span>
+                <span className="text-[14.5px] leading-[1.55] text-on-ink-nav">{text}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Featured */}
-      <section className="py-14" style={{ background: "#FDFCF8" }}>
-        <div className="max-w-5xl mx-auto px-5 sm:px-8">
-          <h2 className="font-bold text-2xl mb-8" style={{ fontFamily: "var(--font-playfair)", color: "#18160F" }}>Featured Guides</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {featured.map((post) => (
-              <Link key={post.slug} href={`/blog/${post.slug}`} className="group block rounded-xl p-6" style={{ border: "1px solid #EAE8E1", background: "#fff" }}>
-                <div className="tag-pill mb-4 inline-flex">{getCategoryLabel(post.category)}</div>
-                <h3 className="font-bold text-lg leading-snug mb-3 group-hover:text-green-700 transition-colors" style={{ fontFamily: "var(--font-playfair)", color: "#18160F" }}>{post.title}</h3>
-                <p className="text-sm mb-4" style={{ color: "#706D62" }}>{post.excerpt}</p>
-                <div className="flex items-center justify-between">
-                  <span className="text-xs" style={{ color: "#B8B5AD" }}>{formatDate(post.date)}</span>
-                  <span className="text-xs font-semibold" style={{ color: "#0D7C4A" }}>{post.readTime} min read →</span>
-                </div>
+      {/* Trust strip */}
+      <section className="flex gap-7 flex-wrap justify-center px-[5%] py-5 bg-paper border-b border-rule">
+        {["No sponsored content", "Updated monthly", "Written by actual expats"].map((label) => (
+          <span key={label} className="flex items-center gap-2.5 text-[14.5px] text-slate">
+            <CheckIcon />
+            {label}
+          </span>
+        ))}
+      </section>
+
+      {/* Browse by topic */}
+      <section className="flex flex-col gap-7 px-[5%] py-16 md:py-20">
+        <div className="flex items-baseline justify-between gap-4 flex-wrap border-b border-rule pb-3.5">
+          <h2 className="m-0 font-serif font-semibold text-[clamp(26px,3vw,34px)] tracking-[-0.02em] text-ink">Browse by topic</h2>
+          <span className="font-mono text-[11px] tracking-[0.1em] uppercase text-muted">
+            {categories.length} topics · {totalGuides} guides
+          </span>
+        </div>
+        <div className="flex gap-5 flex-wrap">
+          {categories.map((cat) => {
+            const catPosts = getPostsByCategory(cat.slug);
+            const mostRecent = [...catPosts].sort((a, b) => (a.date < b.date ? 1 : -1))[0];
+            return (
+              <Link
+                key={cat.slug}
+                href={`/category/${cat.slug}`}
+                className="flex-1 basis-[240px] min-w-[230px] flex flex-col gap-2.5 bg-surface border border-rule p-[22px] hover:border-brass"
+              >
+                <span className="font-mono text-[11px] tracking-[0.12em] uppercase text-brass">
+                  {catPosts.length} guide{catPosts.length === 1 ? "" : "s"}
+                </span>
+                <span className="font-serif text-[22px] font-semibold text-ink">{cat.label}</span>
+                <span className="text-[14.5px] leading-[1.55] text-muted">{cat.description}</span>
+                {mostRecent && (
+                  <span className="font-mono text-[11px] text-muted mt-1.5 pt-3 border-t border-rule">
+                    Updated {formatDate(mostRecent.date)}
+                  </span>
+                )}
               </Link>
-            ))}
-          </div>
+            );
+          })}
         </div>
       </section>
 
-      {/* Latest */}
-      <section className="py-10 pb-20" style={{ background: "#FDFCF8", borderTop: "1px solid #EAE8E1" }}>
-        <div className="max-w-5xl mx-auto px-5 sm:px-8">
-          <h2 className="font-bold text-xl mb-8" style={{ fontFamily: "var(--font-playfair)", color: "#18160F" }}>Latest</h2>
-          <div className="divide-y" style={{ borderColor: "#EAE8E1" }}>
-            {latest.map((post) => (
-              <Link key={post.slug} href={`/blog/${post.slug}`} className="py-5 flex items-start gap-4 group block">
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 mb-1.5">
-                    <span className="tag-pill">{getCategoryLabel(post.category)}</span>
-                    <span className="text-xs" style={{ color: "#B8B5AD" }}>{post.readTime} min</span>
-                  </div>
-                  <h3 className="font-semibold leading-snug group-hover:text-green-700 transition-colors" style={{ color: "#18160F" }}>{post.title}</h3>
-                </div>
-                <span className="text-xs shrink-0 mt-1" style={{ color: "#B8B5AD" }}>{formatDate(post.date)}</span>
-              </Link>
-            ))}
-          </div>
-          <div className="mt-8">
-            <Link href="/blog" className="text-sm font-semibold" style={{ color: "#0D7C4A" }}>View all guides →</Link>
-          </div>
-        </div>
+      {/* Ad slot */}
+      <section className="px-[5%] pb-16 md:pb-20">
+        <AdSlot slot={AD_SLOTS.homeLeaderboard} style={{ display: "block", minHeight: 90 }} />
       </section>
 
-      {/* Categories */}
-      <section className="py-12" style={{ background: "#F5F4F0", borderTop: "1px solid #EAE8E1" }}>
-        <div className="max-w-5xl mx-auto px-5 sm:px-8">
-          <h2 className="font-bold text-lg mb-6" style={{ fontFamily: "var(--font-playfair)", color: "#18160F" }}>Browse by Topic</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
-            {categories.map((cat) => (
-              <Link key={cat.slug} href={`/category/${cat.slug}`}
-                className="rounded-lg p-4 text-center text-sm font-medium transition-all hover:border-green-300"
-                style={{ border: "1px solid #EAE8E1", background: "#fff", color: "#18160F" }}>
-                {cat.label}
-              </Link>
-            ))}
+      {/* Most-read comparison — only when a post has real comparisonTable data */}
+      {comparison && featuredComparisonPost && (
+        <section className="bg-surface border-t border-b border-rule px-[5%] py-16 md:py-20 flex flex-col gap-6">
+          <div className="flex items-end justify-between gap-5 flex-wrap">
+            <div className="flex flex-col gap-2">
+              <span className="font-mono text-[11px] tracking-[0.14em] uppercase text-brass">Most-read comparison</span>
+              <h2 className="m-0 font-serif font-semibold text-[clamp(26px,3vw,34px)] tracking-[-0.02em] text-ink">{featuredComparisonPost.title}</h2>
+            </div>
+            <VerifiedStamp date={featuredComparisonPost.lastVerifiedAt} sources={featuredComparisonPost.sources} />
           </div>
+          <ComparisonTable {...comparison} />
+        </section>
+      )}
+
+      {/* Recently verified + newsletter */}
+      <section className="flex gap-8 md:gap-14 flex-wrap items-start px-[5%] py-16 md:py-20">
+        <div className="flex-1 basis-[460px] flex flex-col">
+          <div className="flex items-baseline justify-between gap-4 flex-wrap border-b border-rule pb-3.5 mb-1">
+            <h2 className="m-0 font-serif font-semibold text-[clamp(26px,3vw,34px)] tracking-[-0.02em] text-ink">Recently published</h2>
+            <Link href="/blog" className="font-mono text-[11px] tracking-[0.1em] uppercase text-brass">
+              All guides →
+            </Link>
+          </div>
+          {recent.map((post) => (
+            <Link key={post.slug} href={`/blog/${post.slug}`} className="flex gap-5 py-5 border-b border-rule items-start hover:bg-white">
+              <span className="font-mono text-[11px] text-muted whitespace-nowrap pt-1 min-w-[76px] uppercase">{formatDate(post.date)}</span>
+              <span className="flex flex-col gap-1.5">
+                <span className="font-serif text-[19px] font-semibold leading-[1.3] text-ink">{post.title}</span>
+                <span className="text-sm leading-[1.55] text-muted">{post.excerpt}</span>
+                <span className="font-mono text-[10.5px] tracking-[0.1em] uppercase text-brass">{getCategoryLabel(post.category)}</span>
+              </span>
+            </Link>
+          ))}
         </div>
+        <aside className="flex-0 basis-[300px] min-w-[280px] flex flex-col gap-5">
+          <div className="bg-ink p-6 flex flex-col gap-3">
+            <span className="font-mono text-[11px] tracking-[0.14em] uppercase text-brass-light">Monthly re-check</span>
+            <span className="font-serif text-[21px] font-semibold leading-[1.25] text-white">One email when the numbers change.</span>
+            <span className="text-sm leading-[1.55] text-on-ink-body">We re-verify every guide monthly. You get the diff, not a newsletter.</span>
+            <NewsletterForm />
+          </div>
+          <AdSlot slot={AD_SLOTS.homeSidebar} style={{ display: "block", minHeight: 250 }} />
+        </aside>
       </section>
     </>
   );

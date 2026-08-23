@@ -1,7 +1,14 @@
 export interface FAQ { q: string; a: string; }
 export interface AffiliateProduct { name: string; url: string; cta: string; badge?: string; }
-export interface Section { h2: string; paras: string[]; list?: string[]; image?: { src: string; alt: string }; }
+export interface Section { h2: string; paras: string[]; list?: string[]; image?: { src: string; alt: string }; steps?: { title: string; body: string }[]; }
 export interface HeroImage { src: string; alt: string; caption: string; }
+export interface VerificationSource { label: string; checkedAt: string; }
+export interface ComparisonTableData {
+  columns: { label: string; align?: "left" | "right" }[];
+  rows: (string | number)[][];
+  verdictColumnIndex?: number;
+  note?: string;
+}
 
 export interface Post {
   slug: string;
@@ -19,15 +26,20 @@ export interface Post {
   wordCount?: number;
   coverColor?: string;
   heroImage?: HeroImage;
+  /** Editorial fact-check date -- drives the VerifiedStamp. Leave unset until a
+   *  real check has been done; an unset date renders as "re-check due", not fake-verified. */
+  lastVerifiedAt?: string;
+  sources?: VerificationSource[];
+  comparisonTable?: ComparisonTableData;
   sections?: Section[];
 }
 
 export const categories = [
-  { slug: "banking", label: "Banking" },
-  { slug: "taxes", label: "Taxes" },
-  { slug: "insurance", label: "Insurance" },
-  { slug: "digital-nomad", label: "Digital Nomad" },
-  { slug: "money-transfers", label: "Money Transfers" },
+  { slug: "banking", label: "Banking", description: "Accounts you can open as a non-resident, and what it actually takes to keep one alive abroad." },
+  { slug: "taxes", label: "Taxes", description: "Residency tests and what expats still owe back home." },
+  { slug: "insurance", label: "Insurance", description: "Health cover for freelancers and remote workers living abroad." },
+  { slug: "digital-nomad", label: "Digital Nomad", description: "Budgeting tools and money management for people working across borders." },
+  { slug: "money-transfers", label: "Money Transfers", description: "Sending money abroad without losing it to fees and weekend exchange-rate markups." },
 ];
 
 export const posts: Post[] = [
@@ -351,8 +363,28 @@ export const posts: Post[] = [
   },
 ];
 
+/**
+ * Post.category was populated inconsistently across sessions (mix of slugs,
+ * Title Case labels, and one-off names like "Finance & Money Management"),
+ * so a plain equality match against the category slug silently returned
+ * wrong/empty results. This maps every value actually in use to its real slug.
+ */
+const CATEGORY_ALIASES: Record<string, string> = {
+  banking: "banking",
+  "Banking": "banking",
+  taxes: "taxes",
+  insurance: "insurance",
+  "Expat Insurance": "insurance",
+  "digital-nomad": "digital-nomad",
+  "Finance & Money Management": "digital-nomad",
+  "money-transfers": "money-transfers",
+  "International Money Transfer": "money-transfers",
+};
+
+export const normalizeCategorySlug = (raw: string): string => CATEGORY_ALIASES[raw] ?? raw;
+
 export const getPost = (slug: string) => posts.find((p) => p.slug === slug);
-export const getPostsByCategory = (cat: string) => posts.filter((p) => p.category === cat);
+export const getPostsByCategory = (slug: string) => posts.filter((p) => normalizeCategorySlug(p.category) === slug);
 export const getFeaturedPosts = () => posts.filter((p) => p.featured);
 export const formatDate = (d: string) => new Date(d).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
-export const getCategoryLabel = (slug: string) => categories.find((c) => c.slug === slug)?.label ?? slug;
+export const getCategoryLabel = (raw: string) => categories.find((c) => c.slug === normalizeCategorySlug(raw))?.label ?? raw;
