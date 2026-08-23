@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-export const metadata: Metadata = { title: "Disclaimer | Expat Checkbook", description: "Important disclaimers for Expat Checkbook.", alternates: { canonical: "/disclaimer" } };
+export const metadata: Metadata = { title: "Disclaimer", description: "Important disclaimers for Expat Checkbook.", alternates: { canonical: "/disclaimer" } };
 export default function DisclaimerPage() {
   return (
     <div className="max-w-3xl mx-auto px-5 sm:px-8 py-20" style={{ background: "#FDFCF8" }}>
