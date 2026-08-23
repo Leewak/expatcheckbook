@@ -2,7 +2,7 @@ import Link from "next/link";
 import { posts, categories, formatDate, getCategoryLabel } from "@/lib/posts";
 import type { Metadata } from "next";
 
-export const metadata: Metadata = { title: "All Guides — Expat Banking, Taxes & Money", description: "Browse all expat finance guides." };
+export const metadata: Metadata = { title: "All Guides — Expat Banking, Taxes & Money", description: "Browse all expat finance guides.", alternates: { canonical: "/blog" } };
 
 export default function BlogPage() {
   return (

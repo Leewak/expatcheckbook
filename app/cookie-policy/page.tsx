@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-export const metadata: Metadata = { title: "Cookie Policy | Expat Checkbook", description: "How Expat Checkbook uses cookies." };
+export const metadata: Metadata = { title: "Cookie Policy | Expat Checkbook", description: "How Expat Checkbook uses cookies.", alternates: { canonical: "/cookie-policy" } };
 export default function CookiePolicyPage() {
   return (
     <div className="max-w-3xl mx-auto px-5 sm:px-8 py-20" style={{ background: "#FDFCF8" }}>

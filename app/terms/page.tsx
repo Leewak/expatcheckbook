@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-export const metadata: Metadata = { title: "Terms of Use | Expat Checkbook", description: "Terms and conditions for Expat Checkbook." };
+export const metadata: Metadata = { title: "Terms of Use | Expat Checkbook", description: "Terms and conditions for Expat Checkbook.", alternates: { canonical: "/terms" } };
 export default function TermsPage() {
   return (
     <div className="max-w-3xl mx-auto px-5 sm:px-8 py-20" style={{ background: "#FDFCF8" }}>

@@ -1,5 +1,7 @@
 export interface FAQ { q: string; a: string; }
 export interface AffiliateProduct { name: string; url: string; cta: string; badge?: string; }
+export interface Section { h2: string; paras: string[]; list?: string[]; image?: { src: string; alt: string }; }
+export interface HeroImage { src: string; alt: string; caption: string; }
 
 export interface Post {
   slug: string;
@@ -15,6 +17,9 @@ export interface Post {
   affiliates?: AffiliateProduct[];
   author?: string;
   wordCount?: number;
+  coverColor?: string;
+  heroImage?: HeroImage;
+  sections?: Section[];
 }
 
 export const categories = [
@@ -25,7 +30,7 @@ export const categories = [
   { slug: "money-transfers", label: "Money Transfers" },
 ];
 
-export const posts: Post[
+export const posts: Post[] = [
   {
     slug: "best-bank-account-for-expats",
     title: "Best Bank Account for Expats: Complete 2024 Guide for Digital Nomads",
@@ -126,7 +131,6 @@ export const posts: Post[
       { h2: "How to Get Started with Wise or Revolut", paras: ["Both platforms have identical onboarding. Download the app, verify your email, provide ID verification, and connect your bank account. This takes 10-15 minutes. Neither charges setup fees or monthly subscriptions (though Revolut offers paid tiers). You're ready to receive international transfers or make your first payment within hours.", "Wise's setup emphasizes transfer purpose\u2014you'll be asked what you're sending and to whom. This is compliance-related, not intrusive. Revolut's signup focuses on funding your account for spending. Both ask standard identity verification questions (passport, address proof) to comply with money laundering regulations.", "Once set up, fund your account by linking your home bank account. Transfers in take 1-3 business days initially. After that, you're moving money across borders as easily as sending a text. If you need physical cards (both offer them), order them during signup. Cards arrive in 1-2 weeks."] },
     ],
   },
-] = [
   {
     slug: "wise-vs-revolut-expats-2026",
     title: "Wise vs Revolut for Expats 2026: Which One Actually Saves You More Money?",

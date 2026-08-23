@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getPost, posts, formatDate, getCategoryLabel } from "@/lib/posts";
+import { LogoImage } from "@/components/LogoImage";
 import type { Metadata } from "next";
 
 const SITE_URL = "https://expatcheckbook.info";
@@ -101,13 +102,11 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           {post.affiliates && post.affiliates[0] && (
             <div className="mb-8 p-5 rounded-xl" style={{ background: "#F0FDF4", border: "1px solid #BBF7D0" }}>
               <div className="flex items-center gap-4 mb-3">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <LogoImage
                   src={`https://logo.clearbit.com/${new URL(post.affiliates[0].url).hostname}`}
                   alt={post.affiliates[0].name}
                   className="rounded-lg object-contain bg-white"
                   style={{ width: 48, height: 48, border: "1px solid #E5E7EB" }}
-                  onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
                 />
                 <div>
                   <p className="text-xs font-bold" style={{ color: "#0D7C4A" }}>{post.affiliates[0].badge ?? "Our Recommendation"}</p>
@@ -160,13 +159,11 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           {post.affiliates && post.affiliates.length > 1 && (
             <div className="my-10 p-5 rounded-xl" style={{ background: "#EFF6FF", border: "1px solid #BFDBFE" }}>
               <div className="flex items-center gap-4 mb-3">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <LogoImage
                   src={`https://logo.clearbit.com/${new URL(post.affiliates[1].url).hostname}`}
                   alt={post.affiliates[1].name}
                   className="rounded-lg object-contain bg-white"
                   style={{ width: 48, height: 48, border: "1px solid #E5E7EB" }}
-                  onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
                 />
                 <div>
                   <p className="text-xs font-bold" style={{ color: "#1D4ED8" }}>{post.affiliates[1].badge ?? "Also Recommended"}</p>
@@ -199,13 +196,11 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
                 {post.affiliates.map((aff, i) => (
                   <a key={i} href={aff.url} target="_blank" rel="noopener sponsored" className="flex items-center justify-between p-4 rounded-xl group hover:shadow-sm transition-all" style={{ background: "#fff", border: "1px solid #EAE8E1" }}>
                     <div className="flex items-center gap-3">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
+                      <LogoImage
                         src={`https://logo.clearbit.com/${new URL(aff.url).hostname}`}
                         alt={aff.name}
                         className="rounded object-contain bg-white shrink-0"
                         style={{ width: 36, height: 36, border: "1px solid #E5E7EB" }}
-                        onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
                       />
                       <div>
                         {aff.badge && <span className="text-xs mb-0.5 block" style={{ color: "#0D7C4A" }}>{aff.badge}</span>}

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-export const metadata: Metadata = { title: "Privacy Policy | Expat Checkbook", description: "How Expat Checkbook collects, uses, and protects your personal information." };
+export const metadata: Metadata = { title: "Privacy Policy | Expat Checkbook", description: "How Expat Checkbook collects, uses, and protects your personal information.", alternates: { canonical: "/privacy" } };
 const sections = [
   { h: "1. Information We Collect", body: "We collect information you provide (email for newsletter) and automatically collected data: IP address, browser type, pages viewed, time on site. This is collected via Google Analytics and standard server logs." },
   { h: "2. How We Use Your Information", body: "We use data to operate and improve the website, send newsletters, analyze traffic, and comply with legal obligations. We do not sell your personal information." },

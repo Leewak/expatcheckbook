@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-export const metadata: Metadata = { title: "Affiliate Disclosure | Expat Checkbook", description: "Our affiliate disclosure." };
+export const metadata: Metadata = { title: "Affiliate Disclosure | Expat Checkbook", description: "Our affiliate disclosure.", alternates: { canonical: "/affiliate-disclosure" } };
 export default function AffiliatePage() {
   return (
     <div className="max-w-3xl mx-auto px-5 sm:px-8 py-20" style={{ background: "#FDFCF8" }}>

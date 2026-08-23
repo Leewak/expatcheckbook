@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Expat Checkbook — Smart Money Moves for Life Abroad",
   description: "Banking, taxes, insurance, and money guides for expats and digital nomads. Practical, unbiased, and updated for 2026.",
+  alternates: { canonical: "/" },
 };
 
 export default function HomePage() {
