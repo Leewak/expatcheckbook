@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { posts, categories, formatDate, getCategoryLabel } from "@/lib/posts";
+import { Container } from "@/components/Container";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = { title: "All Guides — Expat Banking, Taxes & Money", description: "Browse all expat finance guides.", alternates: { canonical: "/blog" } };
@@ -7,6 +8,7 @@ export const metadata: Metadata = { title: "All Guides — Expat Banking, Taxes 
 export default function BlogPage() {
   return (
     <div className="px-[5%] py-16 md:py-20">
+      <Container>
       <div className="mb-10 flex flex-col gap-2 border-b border-rule pb-6">
         <span className="font-mono text-[11px] tracking-[0.14em] uppercase text-brass">All guides</span>
         <h1 className="m-0 font-serif font-semibold text-[clamp(30px,4vw,46px)] tracking-[-0.02em] text-ink">Expat Finance Guides</h1>
@@ -31,6 +33,7 @@ export default function BlogPage() {
           </Link>
         ))}
       </div>
+      </Container>
     </div>
   );
 }

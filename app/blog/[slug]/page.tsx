@@ -7,6 +7,7 @@ import { ComparisonTable } from "@/components/ComparisonTable";
 import { NumberedSteps } from "@/components/NumberedSteps";
 import { ArticleTOC } from "@/components/ArticleTOC";
 import { AdSlot } from "@/components/AdSlot";
+import { Container } from "@/components/Container";
 import { AD_SLOTS } from "@/lib/adSlots";
 import type { Metadata } from "next";
 
@@ -65,15 +66,18 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }} />
       {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />}
 
-      <div className="flex gap-2 items-center px-[5%] pt-[22px] font-mono text-[11px] tracking-[0.08em] uppercase text-muted flex-wrap">
-        <Link href="/" className="text-muted hover:text-brass">Guides</Link>
-        <span>/</span>
-        <Link href={`/category/${normalizeCategorySlug(post.category)}`} className="text-muted hover:text-brass">{getCategoryLabel(post.category)}</Link>
-        <span>/</span>
-        <span className="text-brass">{post.title.split(":")[0]}</span>
+      <div className="px-[5%] pt-[22px]">
+        <Container className="flex gap-2 items-center font-mono text-[11px] tracking-[0.08em] uppercase text-muted flex-wrap">
+          <Link href="/" className="text-muted hover:text-brass">Guides</Link>
+          <span>/</span>
+          <Link href={`/category/${normalizeCategorySlug(post.category)}`} className="text-muted hover:text-brass">{getCategoryLabel(post.category)}</Link>
+          <span>/</span>
+          <span className="text-brass">{post.title.split(":")[0]}</span>
+        </Container>
       </div>
 
-      <article className="flex gap-8 md:gap-14 flex-wrap items-start px-[5%] pt-6 pb-16 md:pb-20">
+      <article className="px-[5%] pt-6 pb-16 md:pb-20">
+      <Container className="flex gap-8 md:gap-14 flex-wrap items-start">
         <div className="flex-1 basis-[520px] flex flex-col gap-6 max-w-[74ch]">
           <h1 className="m-0 font-serif font-semibold text-[clamp(32px,4vw,50px)] leading-[1.08] tracking-[-0.025em] text-ink text-balance">
             {post.title}
@@ -238,6 +242,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           <ArticleTOC items={tocItems} />
           <AdSlot slot={AD_SLOTS.articleSidebar} style={{ display: "block", minHeight: 250 }} />
         </aside>
+      </Container>
       </article>
     </>
   );
