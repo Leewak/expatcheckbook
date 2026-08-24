@@ -24,13 +24,19 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const post = getPost(slug);
   if (!post) return {};
+  const heroImageUrl = post.heroImage
+    ? (post.heroImage.src.startsWith("http") ? post.heroImage.src : `${SITE_URL}${post.heroImage.src}`)
+    : undefined;
   return {
     title: post.title,
     description: post.excerpt,
     keywords: post.tags.join(", "),
     authors: [{ name: post.author ?? AUTHOR }],
-    openGraph: { title: post.title, description: post.excerpt, url: `${SITE_URL}/blog/${post.slug}`, siteName: SITE_NAME, type: "article", publishedTime: post.date },
-    twitter: { card: "summary_large_image", title: post.title, description: post.excerpt },
+    openGraph: {
+      title: post.title, description: post.excerpt, url: `${SITE_URL}/blog/${post.slug}`, siteName: SITE_NAME, type: "article", publishedTime: post.date,
+      images: heroImageUrl ? [{ url: heroImageUrl, width: 1024, height: 572, alt: post.heroImage!.alt }] : undefined,
+    },
+    twitter: { card: "summary_large_image", title: post.title, description: post.excerpt, images: heroImageUrl ? [heroImageUrl] : undefined },
     alternates: { canonical: `${SITE_URL}/blog/${post.slug}` },
   };
 }
@@ -92,6 +98,11 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
               <VerifiedStamp date={post.lastVerifiedAt} sources={post.sources} />
             </span>
           </div>
+
+          {post.heroImage && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={post.heroImage.src} alt={post.heroImage.alt} className="w-full object-cover border border-rule" style={{ maxHeight: 420 }} />
+          )}
 
           {post.quickAnswer && (
             <div className="border border-rule bg-surface-alt p-5">

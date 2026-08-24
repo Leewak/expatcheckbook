@@ -54,6 +54,7 @@ export const posts: Post[] = [
     coverColor: "#1E1B4B",
     author: "Expat Checkbook Editorial",
     wordCount: 1465,
+    heroImage: { src: "/images/hero/best-bank-account-for-expats.jpg", alt: "Best bank account for expats and digital nomads", caption: "Expat Checkbook" },
     quickAnswer: "The best bank account for expats depends on your location and needs, but Wise excels for multi-currency transfers with real exchange rates, while Revolut offers flexibility for remote workers. Traditional banks often charge high fees and poor rates, making fintech solutions the better choice for most expats.",
     faq: [
       { q: "Can I open a bank account as an expat without a local address?", a: "Most fintech solutions like Wise and Revolut don't require a local address during signup, accepting your passport and proof of address from anywhere. Traditional banks are stricter and typically require a local residential address. If you don't have one yet, get a virtual address service, use your employer's address temporarily, or open fintech accounts before trying traditional banks." },
@@ -87,6 +88,7 @@ export const posts: Post[] = [
     coverColor: "#3B0764",
     author: "Expat Checkbook Editorial",
     wordCount: 1286,
+    heroImage: { src: "/images/hero/how-to-send-money-abroad-cheap.jpg", alt: "How to send money abroad cheap - proven ways to cut transfer costs", caption: "Expat Checkbook" },
     quickAnswer: "The cheapest ways to send money abroad are peer-to-peer transfer services like Wise and Revolut, which offer mid-market exchange rates and minimal fees starting at 1-2%. For large transfers, bank wire transfers and international ACH payments can be competitive, while avoiding traditional banks with inflated markups is key.",
     faq: [
       { q: "What is the absolute cheapest way to send money abroad?", a: "The cheapest way is typically Wise, which charges minimal fees (0.5-2%) and uses the real mid-market exchange rate with zero markup. For very large transfers (50,000+ USD), negotiating directly with providers or using ACH transfers for US destinations can sometimes be cheaper. Peer-to-peer transfers between Revolut users in different currencies are also free if both parties use Revolut." },
@@ -119,6 +121,7 @@ export const posts: Post[] = [
     coverColor: "#064E3B",
     author: "Expat Checkbook Editorial",
     wordCount: 1457,
+    heroImage: { src: "/images/hero/wise-vs-revolut-for-expats.jpg", alt: "Wise vs Revolut for expats - which money app wins", caption: "Expat Checkbook" },
     quickAnswer: "Wise offers better exchange rates and lower transfer fees for large international payments, while Revolut provides more features and flexibility for everyday spending across multiple currencies. Your best choice depends on transfer volume, spending patterns, and whether you need a full digital banking solution or just reliable transfers.",
     faq: [
       { q: "Is Wise or Revolut better for expats?", a: "Neither is universally better\u2014it depends on your needs. Wise is superior for international transfers and getting the real exchange rate. Revolut is better for everyday multi-currency spending and budgeting. Many expats use both: Wise for transfers, Revolut for daily expenses." },
@@ -154,7 +157,7 @@ export const posts: Post[] = [
     featured: true,
     author: "Expat Checkbook Editorial",
     wordCount: 2600,
-    heroImage: { src: "https://images.pexels.com/photos/37760470/pexels-photo-37760470.jpeg?auto=compress&cs=tinysrgb&h=650&w=940", alt: "A scenic view of Tokyo's skyline at dusk, featuring illuminated buildings and a serene park pathway.", caption: "Photo by Iban Lopez Luna on Pexels" },
+    heroImage: { src: "/images/hero/wise-vs-revolut-expats-2026.jpg", alt: "Wise vs Revolut for expats 2026 - which one saves you more money", caption: "Expat Checkbook" },
     quickAnswer: "Wise is better for: international transfers (real mid-market rate, no markup), receiving foreign currency salary, and transparency. Revolut is better for: daily spending abroad (no foreign transaction fees up to monthly limit), budgeting features, and multi-currency accounts under one app. For most expats, use Wise for sending/receiving money and Revolut for day-to-day spending abroad. On a $1,000 transfer, Wise saves $8–25 vs Revolut's weekend rate markup.",
     faq: [
       { q: "Is Wise or Revolut better for expats?", a: "Both are excellent — they serve different use cases. Wise is better for international money transfers (it uses the real mid-market exchange rate with a transparent fee of 0.4–1.5% vs Revolut's weekend rate markups). Revolut is better for daily spending in foreign countries, with no transaction fees up to your monthly limit (€1,000 on free, unlimited on Premium). Most experienced expats use both: Wise for transfers, Revolut for spending." },
@@ -179,7 +182,7 @@ export const posts: Post[] = [
     featured: true,
     author: "Expat Checkbook Editorial",
     wordCount: 2400,
-    heroImage: { src: "https://images.pexels.com/photos/20843729/pexels-photo-20843729.jpeg?auto=compress&cs=tinysrgb&h=650&w=940", alt: "Close-up of various euro banknotes in different values on a plain background.", caption: "Photo by Ivan Vi on Pexels" },
+    heroImage: { src: "/images/hero/best-bank-account-expats.jpg", alt: "Best bank accounts for expats 2026 - zero-fee, global access", caption: "Expat Checkbook" },
     quickAnswer: "Best bank accounts for expats in 2026 by region: Americans abroad: Charles Schwab Investor Checking (unlimited ATM fee refunds worldwide, no foreign transaction fee, free). Europeans abroad: N26 Standard (free, €5 ATM fee refunds/month, no foreign transaction fee) or Monzo (UK). Canadians: Wise Account + KOHO. Global nomads: Wise Account as primary + local bank as backup. The Charles Schwab account is the gold standard for American expats — no other bank comes close.",
     faq: [
       { q: "What is the best bank account for Americans living abroad?", a: "Charles Schwab Investor Checking Account is the best for Americans abroad — bar none. It charges zero foreign transaction fees, refunds ALL ATM fees worldwide at the end of each month (including ATM owner fees), has no monthly fees, and requires no minimum balance. You need a Schwab brokerage account to open it (also free, also useful). Most American expats consider this essential. Second pick: USAA (if eligible — requires military connection)." },
@@ -204,7 +207,7 @@ export const posts: Post[] = [
     featured: false,
     author: "Expat Checkbook Editorial",
     wordCount: 3000,
-    heroImage: { src: "https://images.pexels.com/photos/6927334/pexels-photo-6927334.jpeg?auto=compress&cs=tinysrgb&h=650&w=940", alt: "Mobile calculator app on tax documents, highlighting financial calculations and tax preparation.", caption: "Photo by Polina Tankilevitch on Pexels" },
+    heroImage: { src: "/images/hero/digital-nomad-taxes-usa.jpg", alt: "US digital nomad taxes 2026 - FEIE, FBAR, and legally reducing your tax bill", caption: "Expat Checkbook" },
     quickAnswer: "Key US digital nomad tax facts for 2026: (1) Americans must file US taxes regardless of where they live or work — there's no exemption for living abroad. (2) The Foreign Earned Income Exclusion (FEIE) lets you exclude up to $126,500 of foreign-earned income from US taxes in 2026. (3) You qualify for FEIE via the Physical Presence Test (330+ days outside the US in a 12-month period) or Bona Fide Residence Test. (4) You must still file even if you owe $0. (5) FBAR filing is required if you have $10,000+ in foreign accounts at any point. Non-compliance fines start at $10,000.",
     faq: [
       { q: "Do digital nomads have to pay US taxes?", a: "Yes — all US citizens and Green Card holders must file US taxes regardless of where they live and work, even if they owe nothing. This is called 'citizenship-based taxation' and the US is one of only two countries (with Eritrea) that does this. The good news: the Foreign Earned Income Exclusion (FEIE) lets most digital nomads exclude the first $126,500 (2026) of foreign income from US taxes, and the Foreign Tax Credit (FTC) prevents double taxation on the rest." },
@@ -229,7 +232,7 @@ export const posts: Post[] = [
     featured: false,
     author: "Expat Checkbook Editorial",
     wordCount: 2100,
-    heroImage: { src: "https://images.pexels.com/photos/37723971/pexels-photo-37723971.jpeg?auto=compress&cs=tinysrgb&h=650&w=940", alt: "A plastic bag resembling a bird, tangled on power lines, with a clear blue sky background.", caption: "Photo by Andy Lee on Pexels" },
+    heroImage: { src: "/images/hero/safetywing-review.jpg", alt: "SafetyWing Nomad Insurance review 2026 - tested after 12 months and 3 claims", caption: "Expat Checkbook" },
     quickAnswer: "SafetyWing Nomad Insurance (formerly 'Remote Health') costs $56.28/4 weeks for ages 18–39 — extremely affordable vs. alternatives ($200–500/month). It covers: hospitalization, emergency treatment, emergency evacuation (up to $100,000), COVID-19 treatment. It does NOT cover: preventive care, dental, vision, pre-existing conditions, home country stays (only 30 days/60 days in the US). Best for: budget nomads who want emergency/hospitalization coverage. Not ideal for: chronic conditions, needing dental/vision, older travelers (rates increase sharply after 40).",
     faq: [
       { q: "Is SafetyWing travel insurance worth it?", a: "SafetyWing is worth it for healthy, budget-conscious digital nomads who primarily need emergency/hospitalization coverage. At $56/month (ages 18–39), it's 3–5× cheaper than full expat health insurance. It's NOT worth it if you have pre-existing conditions, need dental/vision, or want predictable coverage for routine doctor visits. Many nomads use SafetyWing as their primary 'emergency net' and pay out-of-pocket for routine care in low-cost countries." },
@@ -279,7 +282,7 @@ export const posts: Post[] = [
     featured: false,
     author: "Expat Checkbook Editorial",
     wordCount: 1900,
-    heroImage: { src: "https://images.pexels.com/photos/34240091/pexels-photo-34240091.jpeg?auto=compress&cs=tinysrgb&h=650&w=940", alt: "Close-up of Polish Zloty banknotes on a calculator with a calendar in the background.", caption: "Photo by Niepoddawajsie.pl Luk on Pexels" },
+    heroImage: { src: "/images/hero/best-budgeting-app-expat.jpg", alt: "Best budgeting apps for expats and digital nomads 2026 - multi-currency", caption: "Expat Checkbook" },
     quickAnswer: "Best budgeting apps for expats in 2026: Best overall (multi-currency): YNAB ($14.99/month or $99/year) — zero-based budgeting, multi-currency support, and the most effective system for variable income. Best free option: Wallet by BudgetBakers (free tier, connects to 40,000+ banks in 60 countries). Best for automatic tracking: Copilot (iOS only, $13/month) — AI categorization is the best we've tested. Best for simplicity: Revolut's built-in analytics (free with any Revolut account). YNAB pays for itself if it stops even one budget blowout.",
     faq: [
       { q: "What is the best budgeting app for people who spend in multiple currencies?", a: "YNAB (You Need A Budget) handles multi-currency budgeting best. You can set your base currency and track expenses in any currency — YNAB automatically records the home-currency equivalent at the time of the transaction. Wallet by BudgetBakers connects to international banks and supports multi-currency accounts. Revolut's in-app analytics shows spending by currency, category, and country — useful if Revolut is your primary spending card." },
@@ -304,7 +307,7 @@ export const posts: Post[] = [
     coverColor: "#1E3A8A",
     author: "Expat Checkbook Editorial",
     wordCount: 1558,
-    heroImage: { src: "https://images.pexels.com/photos/12585206/pexels-photo-12585206.jpeg?auto=compress&cs=tinysrgb&h=650&w=940", alt: "Close-up of a classic stethoscope on a blue background, symbolizing healthcare and medical profession.", caption: "Photo by Etatics Inc. on Pexels" },
+    heroImage: { src: "/images/hero/international-health-insurance-freelancer.jpg", alt: "International health insurance for freelancers - complete guide", caption: "Expat Checkbook" },
     quickAnswer: "International health insurance for freelancers covers medical expenses across multiple countries, typically costing $50-300 monthly depending on age and coverage level. The best options for self-employed professionals include SafetyWing, Allianz, and specialized expat plans that don't require employer sponsorship.",
     faq: [
       { q: "Can I use my home country health insurance while working abroad as a freelancer?", a: "Most home country insurance excludes you once you establish residency abroad, and even travel-friendly policies typically limit coverage to 6-12 months. Check your policy details, but plan on purchasing international coverage rather than relying on home insurance. This applies to both government systems and private insurance. Your home country cannot provide visa-required health insurance proof for most digital nomad visas." },
@@ -338,7 +341,7 @@ export const posts: Post[] = [
     coverColor: "#0F4C3A",
     author: "Expat Checkbook Editorial",
     wordCount: 1487,
-    heroImage: { src: "https://images.pexels.com/photos/16600134/pexels-photo-16600134.jpeg?auto=compress&cs=tinysrgb&h=650&w=940", alt: "Flat lay of financial documents, euro note, calculator, smartphone, and key for budget management.", caption: "Photo by Jakub Zerdzicki on Pexels" },
+    heroImage: { src: "/images/hero/best-budgeting-app-abroad.jpg", alt: "Best budgeting app abroad - top picks for expats and digital nomads", caption: "Expat Checkbook" },
     quickAnswer: "The best budgeting app abroad depends on your needs, but YNAB (You Need A Budget) and Wise lead for expats because they handle multi-currency transactions, foreign spending, and currency conversion fees. For detailed expense tracking with offline capability, consider Wally or Money Dashboard alongside a dedicated banking app.",
     faq: [
       { q: "What's the best budgeting app if I'm moving between countries frequently?", a: "Wally or Revolut are best for frequent movers because they work offline (Wally) and offer frictionless multi-currency spending (Revolut). Both sync easily when you reconnect to internet and don't require constant account linking like desktop-heavy apps. YNAB also works well but requires more intentional category setup when you move. Test all three free trials in your actual locations before committing." },
