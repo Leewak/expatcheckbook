@@ -156,6 +156,10 @@ export default function HomePage() {
             {recent.map((post) => (
               <Link key={post.slug} href={`/blog/${post.slug}`} className="flex gap-5 py-5 border-b border-rule items-start hover:bg-white">
                 <span className="font-mono text-[11px] text-muted whitespace-nowrap pt-1 min-w-[76px] uppercase">{formatDate(post.date)}</span>
+                {post.heroImage && (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={post.heroImage.src} alt={post.heroImage.alt} loading="lazy" className="w-24 h-20 sm:w-32 sm:h-24 shrink-0 object-cover border border-rule" />
+                )}
                 <span className="flex flex-col gap-1.5">
                   <span className="font-serif text-[19px] font-semibold leading-[1.3] text-ink">{post.title}</span>
                   <span className="text-sm leading-[1.55] text-muted">{post.excerpt}</span>

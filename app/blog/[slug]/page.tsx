@@ -119,7 +119,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
             <div className="border border-rule bg-surface p-5 flex flex-col gap-3">
               <div className="flex items-center gap-4">
                 <LogoImage
-                  src={`https://logo.clearbit.com/${new URL(post.affiliates[0].url).hostname}`}
+                  src={`https://www.google.com/s2/favicons?sz=128&domain=${new URL(post.affiliates[0].url).hostname}`}
                   alt={post.affiliates[0].name}
                   className="object-contain bg-white"
                   style={{ width: 48, height: 48, border: "1px solid #DCDCD6" }}
@@ -169,7 +169,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
             <div className="border border-rule bg-surface p-5 flex flex-col gap-3">
               <div className="flex items-center gap-4">
                 <LogoImage
-                  src={`https://logo.clearbit.com/${new URL(post.affiliates[1].url).hostname}`}
+                  src={`https://www.google.com/s2/favicons?sz=128&domain=${new URL(post.affiliates[1].url).hostname}`}
                   alt={post.affiliates[1].name}
                   className="object-contain bg-white"
                   style={{ width: 48, height: 48, border: "1px solid #DCDCD6" }}
@@ -224,7 +224,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
                   <a key={i} href={aff.url} target="_blank" rel="noopener sponsored" className="flex items-center justify-between p-4 border border-rule bg-surface hover:border-brass">
                     <div className="flex items-center gap-3">
                       <LogoImage
-                        src={`https://logo.clearbit.com/${new URL(aff.url).hostname}`}
+                        src={`https://www.google.com/s2/favicons?sz=128&domain=${new URL(aff.url).hostname}`}
                         alt={aff.name}
                         className="object-contain bg-white shrink-0"
                         style={{ width: 36, height: 36, border: "1px solid #DCDCD6" }}

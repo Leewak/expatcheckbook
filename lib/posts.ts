@@ -1,3 +1,4 @@
+import { postImages } from './postImages';
 export interface FAQ { q: string; a: string; }
 export interface AffiliateProduct { name: string; url: string; cta: string; badge?: string; }
 export interface Section { h2: string; paras: string[]; list?: string[]; image?: { src: string; alt: string }; steps?: { title: string; body: string }[]; }
@@ -365,6 +366,14 @@ export const posts: Post[] = [
     ],
   },
 ];
+
+// Extra photos (Pexels) picked by blog-farm/scripts/section_images.py: cover (fills a missing one or replaces a duplicate) + in-article images.
+for (const p of posts) {
+  const extra = postImages[p.slug];
+  if (!extra) continue;
+  if (extra.hero) p.heroImage = extra.hero;
+  p.sections?.forEach((s, i) => { if (extra.sections?.[i] && !s.image) s.image = extra.sections[i]; });
+}
 
 /**
  * Post.category was populated inconsistently across sessions (mix of slugs,

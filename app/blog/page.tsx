@@ -25,6 +25,10 @@ export default function BlogPage() {
         {posts.map((post) => (
           <Link key={post.slug} href={`/blog/${post.slug}`} className="py-5 flex items-start gap-5 border-b border-rule hover:bg-white flex-wrap">
             <span className="font-mono text-[11px] text-muted whitespace-nowrap pt-1 min-w-[76px] uppercase">{formatDate(post.date)}</span>
+            {post.heroImage && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={post.heroImage.src} alt={post.heroImage.alt} loading="lazy" className="w-24 h-20 sm:w-32 sm:h-24 shrink-0 object-cover border border-rule" />
+            )}
             <div className="flex-1 min-w-[240px]">
               <h3 className="m-0 font-serif text-lg font-semibold leading-snug text-ink">{post.title}</h3>
               <p className="mt-1.5 mb-0 text-sm leading-[1.55] text-muted line-clamp-2">{post.excerpt}</p>
