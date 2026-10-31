@@ -6,7 +6,7 @@ import { VerifiedStamp } from "@/components/VerifiedStamp";
 import { ComparisonTable } from "@/components/ComparisonTable";
 import { NumberedSteps } from "@/components/NumberedSteps";
 import { ArticleTOC } from "@/components/ArticleTOC";
-import { AdsterraBanner, AdsterraInline, AdsterraNative } from "@/components/Adsterra";
+import { AdsterraBanner, AdsterraInline, AdsterraNative, AdsterraSponsoredLink } from "@/components/Adsterra";
 import { Container } from "@/components/Container";
 import type { Metadata } from "next";
 
@@ -239,6 +239,8 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
               </div>
             </div>
           )}
+
+          <AdsterraSponsoredLink className="mt-10" />
 
           <AdsterraNative />
 
