@@ -6,9 +6,8 @@ import { VerifiedStamp } from "@/components/VerifiedStamp";
 import { ComparisonTable } from "@/components/ComparisonTable";
 import { NumberedSteps } from "@/components/NumberedSteps";
 import { ArticleTOC } from "@/components/ArticleTOC";
-import { AdSlot } from "@/components/AdSlot";
+import { AdsterraBanner, AdsterraInline, AdsterraNative } from "@/components/Adsterra";
 import { Container } from "@/components/Container";
-import { AD_SLOTS } from "@/lib/adSlots";
 import type { Metadata } from "next";
 
 const SITE_URL = "https://expatcheckbook.info";
@@ -160,10 +159,9 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
                   </ul>
                 )
               )}
+              {i === 1 && post.sections!.length > 2 && <AdsterraInline className="my-4" />}
             </div>
           ))}
-
-          <AdSlot slot={AD_SLOTS.articleInline} style={{ display: "block", minHeight: 90 }} />
 
           {post.affiliates && post.affiliates.length > 1 && (
             <div className="border border-rule bg-surface p-5 flex flex-col gap-3">
@@ -241,6 +239,8 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
             </div>
           )}
 
+          <AdsterraNative />
+
           <div className="flex flex-wrap gap-2 pt-6 border-t border-rule">
             {post.tags.map((tag) => (
               <span key={tag} className="font-mono text-xs px-2.5 py-1 bg-surface-alt text-muted">{tag}</span>
@@ -251,7 +251,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
         <aside className="flex-0 basis-[280px] min-w-[260px] sticky top-[70px] flex flex-col gap-5">
           <ArticleTOC items={tocItems} />
-          <AdSlot slot={AD_SLOTS.articleSidebar} style={{ display: "block", minHeight: 250 }} />
+          <AdsterraBanner size="300x250" />
         </aside>
       </Container>
       </article>

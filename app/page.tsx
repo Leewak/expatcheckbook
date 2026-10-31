@@ -4,9 +4,7 @@ import { posts, categories, getPostsByCategory, getCategoryLabel, formatDate, ge
 import { VerifiedStamp } from "@/components/VerifiedStamp";
 import { ComparisonTable } from "@/components/ComparisonTable";
 import { NewsletterForm } from "@/components/NewsletterForm";
-import { AdSlot } from "@/components/AdSlot";
 import { Container } from "@/components/Container";
-import { AD_SLOTS } from "@/lib/adSlots";
 
 export const metadata: Metadata = {
   title: "Expat Checkbook — Smart Money Moves for Life Abroad",
@@ -120,13 +118,6 @@ export default function HomePage() {
         </Container>
       </section>
 
-      {/* Ad slot */}
-      <section className="px-[5%] pb-16 md:pb-20">
-        <Container>
-          <AdSlot slot={AD_SLOTS.homeLeaderboard} style={{ display: "block", minHeight: 90 }} />
-        </Container>
-      </section>
-
       {/* Most-read comparison — only when a post has real comparisonTable data */}
       {comparison && featuredComparisonPost && (
         <section className="bg-surface border-t border-b border-rule px-[5%] py-16 md:py-20">
@@ -175,7 +166,6 @@ export default function HomePage() {
               <span className="text-sm leading-[1.55] text-on-ink-body">We re-verify every guide monthly. You get the diff, not a newsletter.</span>
               <NewsletterForm />
             </div>
-            <AdSlot slot={AD_SLOTS.homeSidebar} style={{ display: "block", minHeight: 250 }} />
           </aside>
         </Container>
       </section>
