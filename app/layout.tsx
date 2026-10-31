@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { IBM_Plex_Serif, IBM_Plex_Mono, Public_Sans } from "next/font/google";
 import { Container } from "@/components/Container";
 import "./globals.css";
+import { AdsterraSideRails } from "@/components/Adsterra";
 
 const plexSerif = IBM_Plex_Serif({ variable: "--font-plex-serif", weight: ["400", "500", "600", "700"], subsets: ["latin"] });
 const plexMono = IBM_Plex_Mono({ variable: "--font-plex-mono", weight: ["400", "500", "600"], subsets: ["latin"] });
@@ -82,6 +83,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </header>
 
         <main className="flex-1">{children}</main>
+        <AdsterraSideRails />
 
         <footer className="px-[5%] pt-[clamp(40px,5cqi,64px)] pb-8 bg-ink">
           <Container className="flex flex-col gap-[34px]">
