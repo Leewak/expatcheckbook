@@ -2,6 +2,7 @@ import Link from "next/link";
 import { posts, categories, formatDate, getCategoryLabel } from "@/lib/posts";
 import { Container } from "@/components/Container";
 import type { Metadata } from "next";
+import { AdsterraInline, AdsterraNative } from "@/components/Adsterra";
 
 export const metadata: Metadata = { title: "All Guides — Expat Banking, Taxes & Money", description: "Browse all expat finance guides.", alternates: { canonical: "/blog" } };
 
@@ -21,6 +22,7 @@ export default function BlogPage() {
           </Link>
         ))}
       </div>
+      <AdsterraInline className="mb-8" />
       <div className="flex flex-col">
         {posts.map((post) => (
           <Link key={post.slug} href={`/blog/${post.slug}`} className="py-5 flex items-start gap-5 border-b border-rule hover:bg-white flex-wrap">
@@ -37,6 +39,7 @@ export default function BlogPage() {
           </Link>
         ))}
       </div>
+      <AdsterraNative className="mt-12" />
       </Container>
     </div>
   );

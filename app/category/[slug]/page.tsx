@@ -3,6 +3,7 @@ import Link from "next/link";
 import { categories, getPostsByCategory, formatDate } from "@/lib/posts";
 import { Container } from "@/components/Container";
 import type { Metadata } from "next";
+import { AdsterraInline, AdsterraNative } from "@/components/Adsterra";
 
 export async function generateStaticParams() { return categories.map((c) => ({ slug: c.slug })); }
 
@@ -34,6 +35,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
       </div>
 
       <div className="bg-paper px-[5%] pt-10 pb-16">
+        <AdsterraInline className="mb-8" />
         <Container className="flex flex-col">
           {catPosts.map((post) => (
             <Link key={post.slug} href={`/blog/${post.slug}`} className="py-5 flex items-start gap-5 border-b border-rule hover:bg-white flex-wrap">
@@ -49,6 +51,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
             </Link>
           ))}
           {catPosts.length === 0 && <p className="text-sm text-muted">No guides in this topic yet.</p>}
+          <AdsterraNative className="mt-12" />
         </Container>
       </div>
     </>

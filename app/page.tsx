@@ -5,6 +5,7 @@ import { VerifiedStamp } from "@/components/VerifiedStamp";
 import { ComparisonTable } from "@/components/ComparisonTable";
 import { NewsletterForm } from "@/components/NewsletterForm";
 import { Container } from "@/components/Container";
+import { AdsterraInline, AdsterraNative } from "@/components/Adsterra";
 
 export const metadata: Metadata = {
   title: "Expat Checkbook — Smart Money Moves for Life Abroad",
@@ -82,6 +83,8 @@ export default function HomePage() {
         </Container>
       </section>
 
+      <div className="px-5"><AdsterraInline className="my-8" /></div>
+
       {/* Browse by topic */}
       <section className="px-[5%] py-16 md:py-20">
         <Container className="flex flex-col gap-7">
@@ -134,6 +137,8 @@ export default function HomePage() {
         </section>
       )}
 
+      <div className="px-5"><AdsterraInline className="my-8" /></div>
+
       {/* Recently published + newsletter */}
       <section className="px-[5%] py-16 md:py-20">
         <Container className="flex gap-8 md:gap-14 flex-wrap items-start">
@@ -169,6 +174,7 @@ export default function HomePage() {
           </aside>
         </Container>
       </section>
+      <div className="px-5 max-w-5xl mx-auto"><AdsterraNative className="my-10" /></div>
     </>
   );
 }

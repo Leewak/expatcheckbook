@@ -138,6 +138,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
             <ComparisonTable {...post.comparisonTable} />
           )}
 
+          <AdsterraInline className="my-8" />
           {post.sections?.map((section, i) => (
             <div key={i} id={slugifyHeading(section.h2)} className="flex flex-col gap-4 scroll-mt-24">
               <h2 className="m-0 font-serif font-semibold text-[clamp(24px,2.5vw,30px)] tracking-[-0.02em] text-ink">{section.h2}</h2>
@@ -159,7 +160,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
                   </ul>
                 )
               )}
-              {i === 1 && post.sections!.length > 2 && <AdsterraInline className="my-4" />}
+              {i % 2 === 1 && i < post.sections!.length - 1 && <AdsterraInline className="my-4" />}
             </div>
           ))}
 
