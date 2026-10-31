@@ -46,7 +46,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${plexSerif.variable} ${plexMono.variable} ${publicSans.variable}`}>
       <head>
         {/* eslint-disable-next-line @next/next/no-sync-scripts */}
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9394532963824272" crossOrigin="anonymous"></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(c,l,a,r,i,t,y){
